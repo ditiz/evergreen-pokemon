@@ -1,57 +1,73 @@
 export interface Pokedex {
-    pokemon: IPokemon[];
+	pokemon: Pokemon[];
 }
-
-export interface IPokemon {
-    id:              number;
-    num:             string;
-    name:            string;
-    img:             string;
-    type:            Type[];
-    height:          string;
-    weight:          string;
-    candy:           string;
-    candy_count?:    number;
-    egg:             Egg;
-    spawn_chance:    number;
-    avg_spawns:      number;
-    spawn_time:      string;
-    multipliers:     number[] | null;
-    weaknesses:      Type[];
-    next_evolution?: IEvolution[];
-    prev_evolution?: IEvolution[];
+export interface Pokemon {
+	name: string;
+	sprites: Sprites;
+	abilities?: AbilitiesEntity[] | null;
+	base_experience: number;
+	forms?:
+		| AbilityOrFormsEntityOrVersionOrItemOrMoveLearnMethodOrVersionGroupOrMoveOrStatOrTypeOrSpecies[]
+		| null;
+	game_indices?: GameIndicesEntity[] | null;
+	height: number;
+	held_items?: HeldItemsEntity[] | null;
+	id: number;
+	is_default: boolean;
+	location_area_encounters: string;
+	moves?: MovesEntity[] | null;
+	order: number;
+	species: AbilityOrFormsEntityOrVersionOrItemOrMoveLearnMethodOrVersionGroupOrMoveOrStatOrTypeOrSpecies;
+	stats?: StatsEntity[] | null;
+	types?: TypesEntity[];
+	weight: number;
 }
-
-export enum Egg {
-    NotInEggs = "Not in Eggs",
-    OmanyteCandy = "Omanyte Candy",
-    The10KM = "10 km",
-    The2KM = "2 km",
-    The5KM = "5 km",
+export interface Sprites {
+	back_default: string;
+	back_female: string;
+	back_shiny: string;
+	back_shiny_female: string;
+	front_default: string;
+	front_female: string;
+	front_shiny: string;
+	front_shiny_female: string;
 }
-
-export interface IEvolution {
-    num:  string;
-    name: string;
+export interface AbilitiesEntity {
+	ability: AbilityOrFormsEntityOrVersionOrItemOrMoveLearnMethodOrVersionGroupOrMoveOrStatOrTypeOrSpecies;
+	is_hidden: boolean;
+	slot: number;
 }
-
-export enum Type {
-    Bug = "Bug",
-    Dark = "Dark",
-    Dragon = "Dragon",
-    Electric = "Electric",
-    Fairy = "Fairy",
-    Fighting = "Fighting",
-    Fire = "Fire",
-    Flying = "Flying",
-    Ghost = "Ghost",
-    Grass = "Grass",
-    Ground = "Ground",
-    Ice = "Ice",
-    Normal = "Normal",
-    Poison = "Poison",
-    Psychic = "Psychic",
-    Rock = "Rock",
-    Steel = "Steel",
-    Water = "Water",
+export interface AbilityOrFormsEntityOrVersionOrItemOrMoveLearnMethodOrVersionGroupOrMoveOrStatOrTypeOrSpecies {
+	name: string;
+	url: string;
+}
+export interface GameIndicesEntity {
+	game_index: number;
+	version: AbilityOrFormsEntityOrVersionOrItemOrMoveLearnMethodOrVersionGroupOrMoveOrStatOrTypeOrSpecies;
+}
+export interface HeldItemsEntity {
+	item: AbilityOrFormsEntityOrVersionOrItemOrMoveLearnMethodOrVersionGroupOrMoveOrStatOrTypeOrSpecies;
+	version_details?: VersionDetailsEntity[] | null;
+}
+export interface VersionDetailsEntity {
+	rarity: number;
+	version: AbilityOrFormsEntityOrVersionOrItemOrMoveLearnMethodOrVersionGroupOrMoveOrStatOrTypeOrSpecies;
+}
+export interface MovesEntity {
+	move: AbilityOrFormsEntityOrVersionOrItemOrMoveLearnMethodOrVersionGroupOrMoveOrStatOrTypeOrSpecies;
+	version_group_details?: VersionGroupDetailsEntity[] | null;
+}
+export interface VersionGroupDetailsEntity {
+	level_learned_at: number;
+	move_learn_method: AbilityOrFormsEntityOrVersionOrItemOrMoveLearnMethodOrVersionGroupOrMoveOrStatOrTypeOrSpecies;
+	version_group: AbilityOrFormsEntityOrVersionOrItemOrMoveLearnMethodOrVersionGroupOrMoveOrStatOrTypeOrSpecies;
+}
+export interface StatsEntity {
+	bae_stat: number;
+	effort: number;
+	stat: AbilityOrFormsEntityOrVersionOrItemOrMoveLearnMethodOrVersionGroupOrMoveOrStatOrTypeOrSpecies;
+}
+export interface TypesEntity {
+	slot: number;
+	type: AbilityOrFormsEntityOrVersionOrItemOrMoveLearnMethodOrVersionGroupOrMoveOrStatOrTypeOrSpecies;
 }

@@ -1,32 +1,32 @@
 import React from "react";
-import { Pane, Text, Spinner, Heading } from "evergreen-ui";
+import { Pane, Heading } from "evergreen-ui";
+import CardDetail from "../CardDetail";
 
 interface CardProps {
 	pokemon: any;
 }
 
 const Card = ({ pokemon }: CardProps) => {
-
 	console.log(pokemon);
 
 	return (
 		<Pane
-			background="tint1"
 			height={700}
 			width={1000}
 			display="flex"
 			justifyContent="center"
-			alignItems="center"
-			elevation={1}
+			alignItems="start"
 		>
 			<Pane
 				margin={10}
+				background="tint1"
+				elevation={1}
 				height={500}
 				width={500}
-				border
 				display="flex"
 				justifyContent="center"
 				alignItems="center"
+				hoverElevation={3}
 			>
 				<img
 					src={pokemon.sprites.front_default}
@@ -34,32 +34,25 @@ const Card = ({ pokemon }: CardProps) => {
 						height: "100%",
 						width: "100%"
 					}}
-					alt="pokemon image"
+					alt="pokemon"
 				/>
 			</Pane>
-			<Pane margin={10}>
+			<Pane>
 				<Pane
-					margin={5}
+					background="tint1"
+					elevation={1}
 					height={100}
 					width={350}
-					border
+					margin={10}
 					display="flex"
 					justifyContent="center"
 					alignItems="center"
 				>
-					<Heading size={700}>{pokemon.name}</Heading>
+					<Heading size={900}>
+						{pokemon.name.toUpperCase()}
+					</Heading>
 				</Pane>
-				<Pane
-					margin={5}
-					height={500}
-					width={350}
-					border
-					display="flex"
-					justifyContent="center"
-					alignItems="center"
-				>
-					<Text>Detail</Text>
-				</Pane>
+				<CardDetail pokemon={pokemon}/>
 			</Pane>
 		</Pane>
 	);
