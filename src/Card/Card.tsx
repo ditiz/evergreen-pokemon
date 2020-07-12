@@ -1,6 +1,7 @@
 import React from "react";
 import { Pane, Heading } from "evergreen-ui";
 import CardDetail from "../CardDetail";
+import CardImage from "../CardImage/CardImage";
 
 interface CardProps {
   pokemon: any;
@@ -15,26 +16,7 @@ const Card = ({ pokemon }: CardProps) => {
       justifyContent="center"
       alignItems="start"
     >
-      <Pane
-        margin={10}
-        padding={5}
-        background="tint1"
-        elevation={1}
-        height={500}
-        width={500}
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <img
-          src={pokemon.sprites.front_default}
-          style={{
-            height: "100%",
-            width: "100%",
-          }}
-          alt="pokemon"
-        />
-      </Pane>
+      <CardImage pokemon={pokemon} />
       <Pane>
         <Pane
           background="tint1"
