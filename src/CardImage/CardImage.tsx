@@ -41,17 +41,25 @@ const CardImage = ({ pokemon }: CardImageProps) => {
           alt="pokemon"
         />
       </Pane>
-      <TabNavigation>
-        {spriteNames.map((spriteName) => (
-          <Tab
-            key={spriteName}
-            onSelect={() => handleClick(spriteName)}
-            isSelected={spriteName === currentSprite}
-          >
-            {spriteName}
-          </Tab>
-        ))}
-      </TabNavigation>
+      <Pane
+        padding={5}
+        margin={10}
+        background="tint1"
+        elevation={1}
+        width={500}
+      >
+        <TabNavigation>
+          {spriteNames.map((spriteName) => (
+            <Tab
+              key={spriteName}
+              onSelect={() => handleClick(spriteName)}
+              isSelected={spriteName === currentSprite}
+            >
+              {spriteName}
+            </Tab>
+          ))}
+        </TabNavigation>
+      </Pane>
     </Pane>
   );
 };

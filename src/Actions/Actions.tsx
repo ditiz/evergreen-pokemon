@@ -3,9 +3,10 @@ import { Button, RandomIcon, Pane, PanelTableIcon } from "evergreen-ui";
 
 interface ActionsProps {
   newPokemon: () => void;
+  toggleMoves: () => void;
 }
 
-const Actions = ({ newPokemon }: ActionsProps) => {
+const Actions = ({ newPokemon, toggleMoves }: ActionsProps) => {
   return (
     <Pane>
       <Button
@@ -32,7 +33,7 @@ const Actions = ({ newPokemon }: ActionsProps) => {
         display="flex"
         justifyContent="center"
         alignItems="center"
-        onClick={newPokemon}
+        onClick={toggleMoves}
       >
         <PanelTableIcon size={40} />
       </Button>

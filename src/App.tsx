@@ -5,11 +5,14 @@ import { Pane } from "evergreen-ui";
 
 function App() {
   return (
-    <div className="App">
-      <Pane display="flex" alignItems="start" clearfix>
-        <DefaultInfos />
-      </Pane>
-    </div>
+    <Pane
+      className="App"
+      display="flex"
+      justifyContent="center"
+      alignItems="start"
+    >
+      <DefaultInfos />
+    </Pane>
   );
 }
 

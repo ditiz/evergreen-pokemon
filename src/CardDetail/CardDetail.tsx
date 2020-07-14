@@ -12,24 +12,49 @@ const CardDetail = ({ pokemon }: CardDetailProps) => {
     <Pane
       background="tint1"
       elevation={1}
-      height={100}
       width={350}
       margin={10}
       display="flex"
       justifyContent="center"
-      alignItems="center"
     >
       <Pane>
         <UnorderedList>
-          <ListItem>Height: {pokemon.height}</ListItem>
+          <ListItem>
+            <strong>Height:</strong> {pokemon.height}
+          </ListItem>
           <ListItem>
             <>
-              {pokemon &&
-                pokemon.types &&
-                pokemon.types.map((type) => (
-                  <DetailType key={type.slot} type={type} />
-                ))}
+              {pokemon && pokemon.types && (
+                <>
+                  <Pane marginBottom={5}>
+                    <strong>Types:</strong>
+                  </Pane>
+                  {pokemon.types.map((type) => (
+                    <DetailType key={type.slot} type={type} />
+                  ))}
+                </>
+              )}
             </>
+          </ListItem>
+          <ListItem>
+            {pokemon.game_indices && (
+              <>
+                <Pane marginBottom={5}>
+                  <strong>Is in games:</strong>
+                </Pane>
+                <UnorderedList>
+                  {pokemon.game_indices.length ? (
+                    pokemon.game_indices.map((gameIndice) => (
+                      <ListItem key={gameIndice.version.name}>
+                        {gameIndice.version.name}
+                      </ListItem>
+                    ))
+                  ) : (
+                    <ListItem>None</ListItem>
+                  )}
+                </UnorderedList>
+              </>
+            )}
           </ListItem>
         </UnorderedList>
       </Pane>
